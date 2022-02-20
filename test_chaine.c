@@ -51,11 +51,15 @@ void player_hit(t_player *list, char const *name, int live)
         return ;
     if (strncmp(list->name, name, MAX_NAME) == 0)
     {
-        list->live = list
+        list->live = list->live - live;
+        return ;
     }
-    t_player *next = list->next;
-    printf("%s has %d point(s)\n", list->name, list->live);
-    player_hit(next);
+    else
+    {
+        t_player *next = list->next;
+        player_hit(next, name, live);
+    }
+    
 }
 
 void players_print(t_player *list)
@@ -69,9 +73,16 @@ void players_print(t_player *list)
 
 int main(void)
 {
-    t_player *list;
+    t_player *list = NULL;
 
     list = players_add(list, "player1");
     list = players_add(list, "player2");
+    players_print(list);
+    player_hit(list, "player1", 50);
+    player_hit(list, "player2", 20);
+    players_print(list);
+    player_hit(list, "player1", 80);
+    player_hit(list, "player2", 40);
+    players_print(list);
     players_cleanup(list);
 }
