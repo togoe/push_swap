@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctogoe <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/17 01:44:34 by ctogoe            #+#    #+#             */
-/*   Updated: 2020/07/04 20:18:34 by ctogoe           ###   ########.fr       */
+/*   Created: 2020/06/09 16:13:44 by ctogoe            #+#    #+#             */
+/*   Updated: 2020/07/04 18:11:50 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int		ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
-	size_t	total_len;
-	char	*new_s;
+	int			i;
+	long int	convert;
+	int			sign;
 
-	if (!s1 && !s2)
-		return (NULL);
 	i = 0;
-	j = -1;
-	total_len = ft_strlen(s1) + ft_strlen(s2);
-	new_s = (char *)malloc(sizeof(char) * total_len + 1);
-	if (!new_s)
-		return (NULL);
-	while (s1[i])
+	convert = 0;
+	sign = 1;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		new_s[i] = s1[i];
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	while (s2[++j])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		new_s[i] = s2[j];
+		if (convert > 2147483647 && sign == 1)
+			return (-1);
+		if (convert > 2147483648 && sign == -1)
+			return (0);
+		convert = convert * 10 + str[i] - '0';
 		i++;
 	}
-	new_s[i] = '\0';
-	return (new_s);
+	return (convert * sign);
 }

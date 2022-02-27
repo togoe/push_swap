@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctogoe <ctogoe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctogoe <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 10:13:41 by ctogoe            #+#    #+#             */
-/*   Updated: 2022/02/24 16:03:22 by ctogoe           ###   ########.fr       */
+/*   Created: 2020/07/08 17:11:21 by ctogoe            #+#    #+#             */
+/*   Updated: 2020/07/08 17:11:31 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	ft_putstr_fd("Error: \n", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\n", 2);
-	exit(1);
+	if (alst && new)
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

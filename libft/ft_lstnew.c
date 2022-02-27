@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctogoe <ctogoe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 10:13:41 by ctogoe            #+#    #+#             */
-/*   Updated: 2022/02/24 16:03:22 by ctogoe           ###   ########.fr       */
+/*   Created: 2020/07/08 16:03:28 by ctogoe            #+#    #+#             */
+/*   Updated: 2022/02/27 12:12:16 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+t_list	*ft_lstnew(int content)
 {
-	ft_putstr_fd("Error: \n", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\n", 2);
-	exit(1);
+	t_list	*new;
+
+	if (!(new = malloc(sizeof(t_list))))
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
