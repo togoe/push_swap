@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctogoe <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctogoe <ctogoe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 17:10:22 by ctogoe            #+#    #+#             */
-/*   Updated: 2020/07/08 19:16:32 by ctogoe           ###   ########.fr       */
+/*   Updated: 2022/07/16 19:28:46 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 		*alst = new;
 		return ;
 	}
-	last = *alst;
 	last = ft_lstlast(*alst);
 	last->next = new;
 }

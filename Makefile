@@ -1,7 +1,8 @@
-NAME            =    push_swap
-SRC_DIR            =    ./src/
-INC_DIR            =    ./inc/
-SRCS            =    main.c ft_err.c
+NAME				=	push_swap
+SRC_DIR				=	./srcs/
+INC_DIR				=	./inc/
+SRCS				=	main.c	instructions.c parsing.c ft_utils.c\
+						swap.c push.c rotate.c reverse_rotate.c	\
                     
 SRC_BASENAME    =    $(addprefix $(SRC_DIR), $(SRCS))        
 OBJS            =    $(SRC_BASENAME:.c=.o)

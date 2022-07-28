@@ -6,7 +6,7 @@
 /*   By: ctogoe <ctogoe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:03:28 by ctogoe            #+#    #+#             */
-/*   Updated: 2022/02/27 12:12:16 by ctogoe           ###   ########.fr       */
+/*   Updated: 2022/07/09 21:09:16 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 
-	if (!(new = malloc(sizeof(t_list))))
+	new = malloc(sizeof(t_list));
+	if (!(new))
 		return (NULL);
 	new->content = content;
 	new->next = NULL;

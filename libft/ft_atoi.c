@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctogoe <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ctogoe <ctogoe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 16:13:44 by ctogoe            #+#    #+#             */
-/*   Updated: 2020/07/04 18:11:50 by ctogoe           ###   ########.fr       */
+/*   Updated: 2022/07/16 10:43:09 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/push_swap.h"
 
-int		ft_atoi(const char *str)
+int	ft_err(char *str)
 {
-	int			i;
-	long int	convert;
-	int			sign;
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+int	ft_atoi(const char *str)
+{
+	int				i;
+	long long int	convert;
+	int				sign;
 
 	i = 0;
 	convert = 0;
@@ -31,12 +38,12 @@ int		ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (convert > 2147483647 && sign == 1)
-			return (-1);
-		if (convert > 2147483648 && sign == -1)
-			return (0);
 		convert = convert * 10 + str[i] - '0';
 		i++;
+		if (convert > 2147483647 && sign == 1)
+			return (ft_err("Error"));
+		if (convert > 2147483648 && sign == -1)
+			return (ft_err("Error"));
 	}
 	return (convert * sign);
 }

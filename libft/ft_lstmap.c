@@ -6,7 +6,7 @@
 /*   By: ctogoe <ctogoe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 20:50:58 by ctogoe            #+#    #+#             */
-/*   Updated: 2020/07/10 00:10:13 by ctogoe           ###   ########.fr       */
+/*   Updated: 2022/07/09 21:10:30 by ctogoe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	head = NULL;
 	while (lst)
 	{
-		if (!(new = ft_lstnew(f(lst->content))))
+		new = ft_lstnew(f(lst->content));
+		if (!(new))
 		{
 			ft_lstclear(&head, del);
 			return (NULL);
